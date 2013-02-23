@@ -6,11 +6,22 @@ For details please refer to 'snippets/file_content_js.html'.
 {% endcomment %}
 <div id="file-view">
     {% if not err %}
-        {% if filetype == 'Text' or filetype == 'Sf' %}
+        {% if filetype == 'Text' or filetype == 'Sf' or filetype == 'Markdown' %}
             {% ifnotequal file_content None %}
+                <div id="file-enc-cont">
+                    <label for="file-enc">{% trans "encoding:" %}</label>
+                    <select id="file-enc">
+                        {% for enc in file_encoding_list %}
+                        <option value="{{ enc }}" {% if encoding and enc and encoding == enc %} selected="selected" {% endif %}>{% if enc %}{{ enc }}{% else %}{% trans "auto detect" %}{% endif %}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
                 {% if filetype == 'Text' %}
                 <textarea id="docu-view" class="vh">{{ file_content|escape }}</textarea>
-                {% else %}
+                {% endif %}
+
+                {% if filetype == 'Sf' %}
                 <div id="sf" class="article">{{ file_content|safe }}</div>
                 {% endif %}
             {% endifnotequal %}

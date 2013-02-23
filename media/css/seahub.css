@@ -1474,6 +1474,11 @@ textarea:-moz-placeholder {/* for FF */
 #file-op button {
     padding:2px 8px;
 }
+#file-enc-cont {
+    width:950px;
+    margin:-20px auto 6px;
+    text-align:right;
+}
 #file-view-tip {
     height: 150px;
     padding:10px;
